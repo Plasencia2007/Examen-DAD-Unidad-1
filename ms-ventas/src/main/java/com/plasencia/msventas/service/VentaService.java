@@ -12,6 +12,8 @@ public interface VentaService {
     List<VentaResponseDTO> listarPorEstado(EstadoVenta estado);
     VentaResponseDTO obtenerPorId(Long id);
     VentaResponseDTO crear(VentaRequestDTO dto);
+    VentaResponseDTO actualizar(Long id, VentaRequestDTO dto);
+    void eliminar(Long id);
     VentaResponseDTO confirmar(Long id);
     VentaResponseDTO anular(Long id);
 }

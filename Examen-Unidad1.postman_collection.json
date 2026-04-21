@@ -1,0 +1,341 @@
+{
+  "info": {
+    "name": "Examen Unidad 1 - Microservicios",
+    "_postman_id": "examen-unidad1-dad-2026",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Colección completa: ms-cliente, ms-producto (categorías y productos), ms-ventas (ventas y detalles). Base URL: http://localhost:8080 (API Gateway)"
+  },
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:8080" }
+  ],
+  "item": [
+    {
+      "name": "ms-cliente",
+      "item": [
+        {
+          "name": "Listar todos los clientes",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/api/clientes", "host": ["{{base_url}}"], "path": ["api", "clientes"] }
+          }
+        },
+        {
+          "name": "Obtener cliente por ID",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/api/clientes/1", "host": ["{{base_url}}"], "path": ["api", "clientes", "1"] }
+          }
+        },
+        {
+          "name": "Crear cliente",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/api/clientes", "host": ["{{base_url}}"], "path": ["api", "clientes"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Juan\",\n  \"apellido\": \"Pérez\",\n  \"email\": \"juan.perez@gmail.com\",\n  \"telefono\": \"987654321\",\n  \"direccion\": \"Av. Lima 123\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Actualizar cliente",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/api/clientes/1", "host": ["{{base_url}}"], "path": ["api", "clientes", "1"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Juan Carlos\",\n  \"apellido\": \"Pérez García\",\n  \"email\": \"juancarlos@gmail.com\",\n  \"telefono\": \"999888777\",\n  \"direccion\": \"Jr. Cusco 456\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Eliminar cliente",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{base_url}}/api/clientes/1", "host": ["{{base_url}}"], "path": ["api", "clientes", "1"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "ms-producto",
+      "item": [
+        {
+          "name": "Categorías",
+          "item": [
+            {
+              "name": "Listar todas las categorías",
+              "request": {
+                "method": "GET",
+                "url": { "raw": "{{base_url}}/api/categorias", "host": ["{{base_url}}"], "path": ["api", "categorias"] }
+              }
+            },
+            {
+              "name": "Listar categorías activas",
+              "request": {
+                "method": "GET",
+                "url": { "raw": "{{base_url}}/api/categorias/activas", "host": ["{{base_url}}"], "path": ["api", "categorias", "activas"] }
+              }
+            },
+            {
+              "name": "Obtener categoría por ID",
+              "request": {
+                "method": "GET",
+                "url": { "raw": "{{base_url}}/api/categorias/1", "host": ["{{base_url}}"], "path": ["api", "categorias", "1"] }
+              }
+            },
+            {
+              "name": "Crear categoría",
+              "request": {
+                "method": "POST",
+                "header": [{ "key": "Content-Type", "value": "application/json" }],
+                "url": { "raw": "{{base_url}}/api/categorias", "host": ["{{base_url}}"], "path": ["api", "categorias"] },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nombre\": \"Electrónica\",\n  \"descripcion\": \"Equipos y dispositivos electrónicos\",\n  \"activo\": true\n}"
+                }
+              }
+            },
+            {
+              "name": "Actualizar categoría",
+              "request": {
+                "method": "PUT",
+                "header": [{ "key": "Content-Type", "value": "application/json" }],
+                "url": { "raw": "{{base_url}}/api/categorias/1", "host": ["{{base_url}}"], "path": ["api", "categorias", "1"] },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nombre\": \"Electrónica y Tecnología\",\n  \"descripcion\": \"Equipos, dispositivos y accesorios tecnológicos\",\n  \"activo\": true\n}"
+                }
+              }
+            },
+            {
+              "name": "Eliminar categoría",
+              "request": {
+                "method": "DELETE",
+                "url": { "raw": "{{base_url}}/api/categorias/1", "host": ["{{base_url}}"], "path": ["api", "categorias", "1"] }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Productos",
+          "item": [
+            {
+              "name": "Listar todos los productos",
+              "request": {
+                "method": "GET",
+                "url": { "raw": "{{base_url}}/api/productos", "host": ["{{base_url}}"], "path": ["api", "productos"] }
+              }
+            },
+            {
+              "name": "Listar productos activos",
+              "request": {
+                "method": "GET",
+                "url": { "raw": "{{base_url}}/api/productos/activos", "host": ["{{base_url}}"], "path": ["api", "productos", "activos"] }
+              }
+            },
+            {
+              "name": "Obtener producto por ID",
+              "request": {
+                "method": "GET",
+                "url": { "raw": "{{base_url}}/api/productos/1", "host": ["{{base_url}}"], "path": ["api", "productos", "1"] }
+              }
+            },
+            {
+              "name": "Listar productos por categoría",
+              "request": {
+                "method": "GET",
+                "url": { "raw": "{{base_url}}/api/productos/categoria/1", "host": ["{{base_url}}"], "path": ["api", "productos", "categoria", "1"] }
+              }
+            },
+            {
+              "name": "Crear producto",
+              "request": {
+                "method": "POST",
+                "header": [{ "key": "Content-Type", "value": "application/json" }],
+                "url": { "raw": "{{base_url}}/api/productos", "host": ["{{base_url}}"], "path": ["api", "productos"] },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nombre\": \"Laptop HP 15\",\n  \"descripcion\": \"Laptop 15 pulgadas, 8GB RAM, 512GB SSD\",\n  \"precio\": 2500.00,\n  \"stock\": 20,\n  \"activo\": true,\n  \"categoriaId\": 1\n}"
+                }
+              }
+            },
+            {
+              "name": "Actualizar producto",
+              "request": {
+                "method": "PUT",
+                "header": [{ "key": "Content-Type", "value": "application/json" }],
+                "url": { "raw": "{{base_url}}/api/productos/1", "host": ["{{base_url}}"], "path": ["api", "productos", "1"] },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nombre\": \"Laptop HP 15 Pro\",\n  \"descripcion\": \"Laptop 15 pulgadas, 16GB RAM, 512GB SSD\",\n  \"precio\": 3200.00,\n  \"stock\": 15,\n  \"activo\": true,\n  \"categoriaId\": 1\n}"
+                }
+              }
+            },
+            {
+              "name": "Ajustar stock (PATCH)",
+              "request": {
+                "method": "PATCH",
+                "url": {
+                  "raw": "{{base_url}}/api/productos/1/stock?delta=10",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "productos", "1", "stock"],
+                  "query": [{ "key": "delta", "value": "10", "description": "Positivo suma, negativo resta" }]
+                }
+              }
+            },
+            {
+              "name": "Eliminar producto",
+              "request": {
+                "method": "DELETE",
+                "url": { "raw": "{{base_url}}/api/productos/1", "host": ["{{base_url}}"], "path": ["api", "productos", "1"] }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ms-ventas",
+      "item": [
+        {
+          "name": "Ventas",
+          "item": [
+            {
+              "name": "Listar todas las ventas",
+              "request": {
+                "method": "GET",
+                "url": { "raw": "{{base_url}}/api/ventas", "host": ["{{base_url}}"], "path": ["api", "ventas"] }
+              }
+            },
+            {
+              "name": "Obtener venta por ID",
+              "request": {
+                "method": "GET",
+                "url": { "raw": "{{base_url}}/api/ventas/1", "host": ["{{base_url}}"], "path": ["api", "ventas", "1"] }
+              }
+            },
+            {
+              "name": "Ventas por cliente",
+              "request": {
+                "method": "GET",
+                "url": { "raw": "{{base_url}}/api/ventas/cliente/1", "host": ["{{base_url}}"], "path": ["api", "ventas", "cliente", "1"] }
+              }
+            },
+            {
+              "name": "Ventas por estado",
+              "request": {
+                "method": "GET",
+                "url": { "raw": "{{base_url}}/api/ventas/estado/PENDIENTE", "host": ["{{base_url}}"], "path": ["api", "ventas", "estado", "PENDIENTE"], "description": "Estados: PENDIENTE, CONFIRMADA, ANULADA" }
+              }
+            },
+            {
+              "name": "Crear venta",
+              "request": {
+                "method": "POST",
+                "header": [{ "key": "Content-Type", "value": "application/json" }],
+                "url": { "raw": "{{base_url}}/api/ventas", "host": ["{{base_url}}"], "path": ["api", "ventas"] },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clienteId\": 1,\n  \"fecha\": \"2026-04-20T10:00:00\",\n  \"detalles\": [\n    { \"productoId\": 1, \"cantidad\": 1 },\n    { \"productoId\": 2, \"cantidad\": 2 }\n  ]\n}"
+                }
+              }
+            },
+            {
+              "name": "Actualizar venta (solo PENDIENTE)",
+              "request": {
+                "method": "PUT",
+                "header": [{ "key": "Content-Type", "value": "application/json" }],
+                "url": { "raw": "{{base_url}}/api/ventas/1", "host": ["{{base_url}}"], "path": ["api", "ventas", "1"] },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clienteId\": 2,\n  \"fecha\": \"2026-04-20T12:00:00\"\n}"
+                }
+              }
+            },
+            {
+              "name": "Confirmar venta",
+              "request": {
+                "method": "POST",
+                "url": { "raw": "{{base_url}}/api/ventas/1/confirmar", "host": ["{{base_url}}"], "path": ["api", "ventas", "1", "confirmar"] }
+              }
+            },
+            {
+              "name": "Anular venta",
+              "request": {
+                "method": "POST",
+                "url": { "raw": "{{base_url}}/api/ventas/1/anular", "host": ["{{base_url}}"], "path": ["api", "ventas", "1", "anular"] }
+              }
+            },
+            {
+              "name": "Eliminar venta",
+              "request": {
+                "method": "DELETE",
+                "url": { "raw": "{{base_url}}/api/ventas/1", "host": ["{{base_url}}"], "path": ["api", "ventas", "1"] }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Detalles",
+          "item": [
+            {
+              "name": "Listar todos los detalles",
+              "request": {
+                "method": "GET",
+                "url": { "raw": "{{base_url}}/api/detalles", "host": ["{{base_url}}"], "path": ["api", "detalles"] }
+              }
+            },
+            {
+              "name": "Obtener detalle por ID",
+              "request": {
+                "method": "GET",
+                "url": { "raw": "{{base_url}}/api/detalles/1", "host": ["{{base_url}}"], "path": ["api", "detalles", "1"] }
+              }
+            },
+            {
+              "name": "Detalles por venta",
+              "request": {
+                "method": "GET",
+                "url": { "raw": "{{base_url}}/api/detalles/venta/1", "host": ["{{base_url}}"], "path": ["api", "detalles", "venta", "1"] }
+              }
+            },
+            {
+              "name": "Crear detalle",
+              "request": {
+                "method": "POST",
+                "header": [{ "key": "Content-Type", "value": "application/json" }],
+                "url": { "raw": "{{base_url}}/api/detalles", "host": ["{{base_url}}"], "path": ["api", "detalles"] },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ventaId\": 1,\n  \"productoId\": 3,\n  \"cantidad\": 2\n}"
+                }
+              }
+            },
+            {
+              "name": "Actualizar detalle",
+              "request": {
+                "method": "PUT",
+                "header": [{ "key": "Content-Type", "value": "application/json" }],
+                "url": { "raw": "{{base_url}}/api/detalles/1", "host": ["{{base_url}}"], "path": ["api", "detalles", "1"] },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"productoId\": 3,\n  \"cantidad\": 5\n}"
+                }
+              }
+            },
+            {
+              "name": "Eliminar detalle",
+              "request": {
+                "method": "DELETE",
+                "url": { "raw": "{{base_url}}/api/detalles/1", "host": ["{{base_url}}"], "path": ["api", "detalles", "1"] }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

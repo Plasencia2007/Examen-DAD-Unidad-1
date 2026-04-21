@@ -14,6 +14,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class DetalleRequestDTO {
 
+    @NotNull(groups = OnCreate.class)
+    @Min(value = 1, groups = OnCreate.class)
+    private Long ventaId;
+
     @NotNull(message = "{validation.detalle.producto.notnull}",
              groups = {OnCreate.class, OnUpdate.class})
     @Min(value = 1, groups = {OnCreate.class, OnUpdate.class})

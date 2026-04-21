@@ -22,6 +22,10 @@ spring:
           uri: lb://ms-ventas
           predicates:
             - Path=/api/ventas/**
+        - id: ms-detalles-route
+          uri: lb://ms-ventas
+          predicates:
+            - Path=/api/detalles/**
 management:
   endpoints:
     web:

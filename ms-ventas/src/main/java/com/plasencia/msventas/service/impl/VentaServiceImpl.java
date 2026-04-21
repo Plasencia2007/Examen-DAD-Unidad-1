@@ -126,6 +126,28 @@ public class VentaServiceImpl implements VentaService {
 
     @Override
     @Transactional
+    public VentaResponseDTO actualizar(Long id, VentaRequestDTO dto) {
+        Venta venta = ventaRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Venta no encontrada con ID: " + id));
+        if (venta.getEstado() != EstadoVenta.PENDIENTE) {
+            throw new VentaInvalidaException(
+                    "Solo se pueden editar ventas en estado PENDIENTE. Estado actual: " + venta.getEstado());
+        }
+        if (dto.getClienteId() != null) venta.setClienteId(dto.getClienteId());
+        if (dto.getFecha() != null) venta.setFecha(dto.getFecha());
+        return toResponseEnriquecido(ventaRepository.save(venta));
+    }
+
+    @Override
+    @Transactional
+    public void eliminar(Long id) {
+        Venta venta = ventaRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Venta no encontrada con ID: " + id));
+        ventaRepository.delete(venta);
+    }
+
+    @Override
+    @Transactional
     public VentaResponseDTO confirmar(Long id) {
         Venta venta = ventaRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Venta no encontrada con ID: " + id));

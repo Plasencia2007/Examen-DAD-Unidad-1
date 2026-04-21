@@ -5,6 +5,7 @@ import com.plasencia.msventas.dto.VentaResponseDTO;
 import com.plasencia.msventas.entity.EstadoVenta;
 import com.plasencia.msventas.service.VentaService;
 import com.plasencia.msventas.validation.groups.OnCreate;
+import com.plasencia.msventas.validation.groups.OnUpdate;
 import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -45,6 +46,18 @@ public class VentaController {
     @ResponseStatus(HttpStatus.CREATED)
     public VentaResponseDTO crear(@Validated(OnCreate.class) @RequestBody VentaRequestDTO dto) {
         return ventaService.crear(dto);
+    }
+
+    @PutMapping("/{id}")
+    public VentaResponseDTO actualizar(@PathVariable @Min(1) Long id,
+                                       @Validated(OnUpdate.class) @RequestBody VentaRequestDTO dto) {
+        return ventaService.actualizar(id, dto);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void eliminar(@PathVariable @Min(1) Long id) {
+        ventaService.eliminar(id);
     }
 
     @PostMapping("/{id}/confirmar")
