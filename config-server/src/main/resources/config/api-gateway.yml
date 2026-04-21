@@ -5,6 +5,23 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
+      routes:
+        - id: ms-cliente-route
+          uri: lb://ms-cliente
+          predicates:
+            - Path=/api/clientes/**
+        - id: ms-producto-categorias-route
+          uri: lb://ms-producto
+          predicates:
+            - Path=/api/categorias/**
+        - id: ms-producto-productos-route
+          uri: lb://ms-producto
+          predicates:
+            - Path=/api/productos/**
+        - id: ms-ventas-route
+          uri: lb://ms-ventas
+          predicates:
+            - Path=/api/ventas/**
 management:
   endpoints:
     web:

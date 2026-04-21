@@ -6,21 +6,6 @@ spring:
     name: api-gateway
   config:
     import: "optional:configserver:http://localhost:8888"
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: true
-          lower-case-service-id: true
-      routes:
-        - id: alumno-route
-          uri: lb://alumno-service
-          predicates:
-            - Path=/api/alumnos/**
-        - id: escuela-route
-          uri: lb://escuela-service
-          predicates:
-            - Path=/api/escuelas/**
 
 eureka:
   client:
